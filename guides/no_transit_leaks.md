@@ -1,6 +1,7 @@
+---
 layout: page
 title: Filtering Known Transit Networks
-permalink: /guides/no_transit_leaks.md/
+permalink: /guides/no_transit_leaks/
 ---
 
 * TOC
@@ -21,7 +22,7 @@ Target import policy :  customers and IXP peering
 
 # Configuration Examples
 
-## Juniper
+## Junos
 
 ```
 policy-options {
@@ -35,3 +36,11 @@ policy-options {
 
  as-path no-transit-import-in ".* (174|209|701|702|1239|1299|2914|3257|3320|3356|3549|3561|4134|5511|6453|6461|6762|7018) .*";
 ```
+
+## OpenBGPD
+
+```
+deny from $IXP transit-as {174,209,701,702,1239,1299,2914,3257,3320,3356,3549,3561,4134,5511,6453,6461,6762,7018}
+```
+
+(*$IXP* represents a list of IXP peers or Route Servers)

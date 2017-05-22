@@ -25,7 +25,7 @@ a form of [Fail-fast](https://en.wikipedia.org/wiki/Fail-fast).
 
 # Configuration Examples
 
-## Juniper
+## Junos
 
 ```
 policy-options {
@@ -56,7 +56,7 @@ policy-options {
 }
 ```
 
-## Cisco IOS XR
+## IOS-XR
 
 ```
 as-path-set bogon-asns
@@ -149,4 +149,19 @@ policy-options
     exit
     commit
 exit
+```
+
+## OpenBGPD
+
+Copied from [openbsd examples](https://github.com/openbsd/src/blob/master/etc/examples/bgpd.conf#L123-L132)
+
+```
+deny from any AS 23456                          # AS_TRANS
+deny from any AS 64496 - 64511                  # Reserved for use in docs and code RFC5398
+deny from any AS 64512 - 65534                  # Reserved for Private Use RFC6996
+deny from any AS 65535                          # Reserved RFC7300
+deny from any AS 65536 - 65551                  # Reserved for use in docs and code RFC5398 
+deny from any AS 65552 - 131071                 # Reserved
+deny from any AS 4200000000 - 4294967294        # Reserved for Private Use RFC6996
+deny from any AS 4294967295                     # Reserved RFC7300
 ```
